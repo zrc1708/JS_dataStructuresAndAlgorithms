@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let numbers = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+        // 们可以使用 splice 方法，简单地通过指定位置/索引，就可以删除相应位置上指定数量的元素。
+        numbers.splice(5,3); 
+        // 这行代码删除了从数组索引 5 开始的 3 个元素。这就意味着 numbers[5]、numbers[6]和
+        // numbers[7]从数组中删除了。现在数组里的值变成了-3、-2、-1、0、1、5、6、7、8、9、10、
+        // 11 和 12（2、3、4 已经被移除）。
+        // 2、3、4 插入数组里，放到之前删除元素的位置上，可以再次使用 splice方法。
+        numbers.splice(5, 0, 2, 3, 4);
+        // splice 方法接收的第一个参数，表示想要删除或插入的元素的索引值。第二个参数是删除
+        // 元素的个数（这个例子里，我们的目的不是删除元素，所以传入 0）。第三个参数往后，就是要
+        // 添加到数组里的值（元素 2、3、4）。输出会发现值又变成了从-3 到 12。
+        // 最后，执行以下这行代码。
+        numbers.splice(5, 3, 2, 3, 4);
+        
+    </script>
+</body>
+
+</html>

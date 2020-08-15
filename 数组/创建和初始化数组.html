@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 用 JavaScript 声明、创建和初始化数组很简单，就像下面这样
+        var daysOfWeek = new Array(); 
+        daysOfWeek = new Array(7); 
+        daysOfWeek = new Array('Sunday', 'Monday', 'Tuesday', 'Wednesday','Thursday', 'Friday', 'Saturday'); 
+
+        // 用 new 创建数组并不是最好的方式。想在创建一个数组，只用中括号（[]）的形式就行了
+        var daysOfWeek = [];
+        var daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+        // 想知道数组里已经存了多少个元素（它的大小），可以使用数组的 length 属性
+        console.log(daysOfWeek.length);
+    </script>
+</body>
+
+</html>

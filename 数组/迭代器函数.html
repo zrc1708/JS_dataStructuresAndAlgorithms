@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 可以用循环语句来处理，例如 for 语句。
+        // 假设数组中的值是从 1 到 15；如果数组里的元素可以被 2 整除（偶数），函数就返回 true，否则返回 false。
+        function isEven(x) { 
+            // 如果 x 是 2 的倍数，就返回 true 
+            console.log(x); 
+            return x % 2 === 0 ? true : false; 
+        }
+        let numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
+
+        // 第一个方法是 every。every 方法会迭代数组中的每个元素，直到返回 false。
+        numbers.every(isEven);
+
+        // 看 some 方法。它和 every 的行为相反，会迭代数组的每个元素，直到函数返回 true。
+        numbers.some(isEven);
+
+        // 如果要迭代整个数组，可以用 forEach 方法。它和使用 for 循环的结果相同。
+        numbers.forEach(x => console.log(x % 2 === 0));
+
+        // 使用 map 和 filter 方法
+        // map 保存了传入 map 方法的 isEven函数的运行结果。这样就很容易知道一个元素是否是偶数。
+        const myMap = numbers.map(isEven);
+        // 还有一个 filter 方法，它返回的新数组由使函数返回 true 的元素组成。
+        const evenNumbers = numbers.filter(isEven);
+        // 在例子里，evenNumbers 数组中的元素都是偶数：[2, 4, 6, 8, 10, 12, 14]。
+
+        // 使用 reduce 方法
+        // reduce 方法接收一个有如下四个参数的函数：previousValue、currentValue、index 和 array。
+        // 因为 index 和 array 是可选的参数，所以如果用不到它们的话，可以不传。
+        // 这个函数会返回一个将被叠加到累加器的值，reduce 方法停止执行后会返回这个累加器。
+        // 如果要对一个数组中的所有元素求和，这就很有用。下面是一个例子。
+        numbers.reduce((previous, current) => previous + current);      //120
+
+    </script>
+</body>
+
+</html>
