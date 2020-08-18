@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./stack-array.js"></script>
+    <script>
+        function decimalToBinary(decNumber) {
+            const remStack = new Stack();
+            let number = decNumber;
+            let rem;
+            let binaryString = '';
+            while (number > 0) { // {1} 
+                rem = Math.floor(number % 2); // {2} 
+                remStack.push(rem); // {3} 
+                number = Math.floor(number / 2); // {4} 
+            }
+            while (!remStack.isEmpty()) { // {5} 
+                binaryString += remStack.pop().toString();
+            }
+            return binaryString;
+        }
+        // 在这段代码里，当除法的结果不为 0 时（行{1}），我们会获得一个余数，并放到栈里（行{2}、行{3}）。
+        // 然后让结果继续除以 2（行{4}）。
+        // 另外请注意：JavaScript 有数值类型，但是它不会区分整数和浮点数。
+        // 因此，要使用 Math.floor 函数仅返回除法运算结果的整数部分。
+        // 最后，用 pop 方法把栈中的元素都移除，把出栈的元素连接成字符串（行{5}）。
+
+        console.log(decimalToBinary(233)); // 11101001 
+        console.log(decimalToBinary(10)); // 1010 
+        console.log(decimalToBinary(1000)); // 1111101000
+    </script>
+</body>
+
+</html>

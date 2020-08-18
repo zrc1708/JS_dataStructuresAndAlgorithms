@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // ES2015 新增了一种叫作 Symbol 的基本类型，它是不可变的，可以用作对象的属性。
+        const _items = Symbol('stackItems');
+        class Stack {
+            constructor() {
+                this[_items] = [];
+            }
+            push(element) {
+                this[_items].push(element);
+            }
+            print(){
+                console.log(this[_items])
+            }
+        }
+        // 这种方法创建了一个假的私有属性，因为 ES2015 新增的 Object.getOwnPropertySymbols 方法
+        // 能够取到类里面声明的所有 Symbols 属性。下面是一个破坏 Stack 类的例子。
+        const stack = new Stack();
+        stack.push(5);
+        stack.push(8);
+        let objectSymbols = Object.getOwnPropertySymbols(stack);
+        console.log(objectSymbols.length); // 输出 1 
+        console.log(objectSymbols); // [Symbol()] 
+        console.log(objectSymbols[0]); // Symbol() 
+        stack[objectSymbols[0]].push(1);
+        stack.print(); // 输出 5, 8, 1
+
+        // 从以上代码可以看到，访问 stack[objectSymbols[0]]是可以得到_items 的。并且，
+        // _items 属性是一个数组，可以进行任意的数组操作，比如从中间删除或添加元素（使用对象进
+        // 行存储也是一样的）。但我们操作的是栈，不应该出现这种行为。
+    </script>
+</body>
+
+</html>

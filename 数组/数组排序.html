@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+        // 数组反序
+        numbers.reverse();
+        console.log(numbers)
+
+        // sort排序
+        numbers.sort()
+        console.log(numbers)
+        // 结果会是[1, 10, 11, 12, 13, 14, 15, 2, 3, 4, 5, 6, 7, 8, 9]。
+        // 看起来不大对，因为 sort 方法在对数组做排序时，把元素默认成字符串进行相互比较。
+        // 们可以传入自己写的比较函数
+        numbers.sort((a, b) => a - b)
+        console.log(numbers)
+        // b 大于 a 时，这段代码会返回负数，反之则返回正数。如果相等的话，就会返回 0。
+        // 也就是说返回的是负数，就说明 a 比 b 小，这样 sort 就能根据返回值的情况对数组进行排序。
+
+        // 自定义sort排序
+        // 我们可以对任何对象类型的数组排序，也可以创建 compareFunction 来比较元素。
+        // 例如，对象 Person 有名字和年龄属性，我们希望根据年龄排序，就可以这么写。
+        const friends = [ 
+            { name: 'John', age: 30 }, 
+            { name: 'Ana', age: 20 }, 
+            { name: 'Chris', age: 25 }, // ES2017 允许存在尾逗号
+        ]; 
+        function comparePerson(a, b) { 
+            if (a.age < b.age) { 
+                return -1; 
+            } 
+            if (a.age > b.age) { 
+                return 1; 
+            } 
+            return 0; 
+        } 
+        console.log(friends.sort(comparePerson));
+        // 在这个例子里，最后会输出 Ana(20), Chris(25), John(30)。
+
+        // 字符串忽略大小写sort排序
+        let names = ['Ana', 'ana', 'john', 'John']; 
+        console.log(names.sort());
+        // 结果是["Ana", "John", "ana", "john"]
+        // 字符比较的时候，是根据字符对应的 ASCII 值来比较的。例如，A、J、a、j 对应的 ASCII 值分别
+        // 是 65、74、97、106。虽然 a 在字母表里是最靠前的，但 J 的 ASCII 值比 a 的小，所以排在了 a 前面。
+        names = ['Ana', 'ana', 'john', 'John']; 
+        console.log(names.sort((a, b) => { 
+            if (a.toLowerCase() < b.toLowerCase()) { 
+                return -1; 
+            } 
+            if (a.toLowerCase() > b.toLowerCase()) { 
+                return 1; 
+            } 
+            return 0; 
+        }));
+        // 在这种情况下，sort 函数不会有任何作用。它会按照现在的大小写字母顺序排序。
+        // 如果希望小写字母排在前面，那么需要使用 localeCompare 方法。
+        names.sort((a, b) => a.localeCompare(b))
+        console.log(names)
+    </script>
+</body>
+
+</html>

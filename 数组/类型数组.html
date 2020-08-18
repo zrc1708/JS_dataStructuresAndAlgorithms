@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 与 C 和 Java 等其他语言不同，JavaScript 数组不是强类型的，因此它可以存储任意类型的数据。
+        // 类型数组则用于存储单一类型的数据。它的语法是 let myArray = new TypedArray (length)，
+        // 其中 TypedArray 的值可以去 类型数组.md 中查看。
+
+        let length = 5;
+        let int16 = new Int16Array(length);
+        let array16 = [];
+        array16.length = length;
+        for (let i = 0; i < length; i++) {
+            int16[i] = i + 1;
+        }
+        console.log(int16);
+    </script>
+</body>
+
+</html>

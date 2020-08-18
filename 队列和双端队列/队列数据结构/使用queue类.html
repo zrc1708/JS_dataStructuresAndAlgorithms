@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./queue.js"></script>
+    <script>
+        const queue = new Queue()
+        console.log(queue.isEmpty());  // 输出 true
+        // 添加元素
+        queue.enqueue('John'); 
+        queue.enqueue('Jack'); 
+        console.log(queue.toString()); // John,Jack
+        // 添加另一个元素
+        queue.enqueue('Camila');
+
+        console.log(queue.toString()); // John, Jack, Camila 
+        console.log(queue.size()); // 输出 3 
+        console.log(queue.isEmpty()); // 输出 false 
+        queue.dequeue(); // 移除 John 
+        queue.dequeue(); // 移除 Jack 
+        console.log(queue.toString()); // Camila
+    </script>
+</body>
+</html>

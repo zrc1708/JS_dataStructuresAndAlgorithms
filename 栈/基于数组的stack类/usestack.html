@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="./stack-array.js"></script>
+    <script>
+        // 首先需要初始化 Stack 类，然后验证一下栈是否为空
+        const stack = new Stack(); 
+        console.log(stack.isEmpty()); // 输出为 true
+        // 往栈里添加一些元素
+        stack.push(5); 
+        stack.push(8);
+        // 如果调用 peek 方法，将输出 8，因为它是往栈里添加的最后一个元素。
+        console.log(stack.peek()); // 输出 8
+        // 再添加一个元素。
+        stack.push(11); 
+        console.log(stack.size()); // 输出 3 
+        console.log(stack.isEmpty()); // 输出 false
+        // 再添加一个元素
+        stack.push(15);
+        // 调用两次 pop 方法从栈里移除两个元素
+        stack.pop(); 
+        stack.pop(); 
+        console.log(stack.size()); // 输出 2
+    </script>
+</body>
+</html>

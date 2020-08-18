@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
+
+        // 搜索有两个方法：indexOf 方法返回与参数匹配的第一个元素的索引；
+        // lastIndexOf 返回与参数匹配的最后一个元素的索引。
+        console.log(numbers.indexOf(10)); 
+        console.log(numbers.indexOf(100));
+        // 第一行的输出是 9，第二行的输出是-1（因为 100 不在数组里）
+        numbers.push(10); 
+        console.log(numbers.lastIndexOf(10)); 
+        console.log(numbers.lastIndexOf(100));
+        // 加入了一个新的元素 10，因此第二行会输出 15（数组中的元素是 1 到 15，还有 10），
+        // 第三行会输出-1（因为 100 不在数组里）。
+
+        
+        //  ECMAScript 2015——find 和 findIndex 方法
+        var numbers = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15]; 
+        function multipleOf13(element, index, array) { 
+            return (element % 13 == 0); 
+        } 
+        console.log(numbers.find(multipleOf13)); 
+        console.log(numbers.findIndex(multipleOf13));
+        // find 和 findIndex 方法接收一个回调函数，搜索一个满足回调函数条件的值。
+        // 上面的例子里，我们要从数组里找一个 13 的倍数。
+        // find 和 findIndex 的不同之处在于，find 方法返回第一个满足条件的值，
+        // findIndex方法则返回这个值在数组里的索引。
+        // 如果没有满足条件的值，find 会返回 undefined，而findIndex 返回-1。
+
+
+        //  ECMAScript 7——使用 includes 方法
+        // 如果数组里存在某个元素，includes 方法会返回 true，否则返回 false。
+        console.log(numbers.includes(15)); 
+        console.log(numbers.includes(20));
+        // 如果给 includes 方法传入一个起始索引，搜索会从索引指定的位置开始。
+        let numbers2 = [7,6,5,4,3,2,1]; 
+        console.log(numbers2.includes(4,5)); 
+        // 上面的例子输出为 false，因为数组索引 5 之后的元素不包含 4。
+    </script>
+</body>
+</html>
