@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./deque.js"></script>
+    <script>
+        // 回文是正反都能读通的单词、词组、数或一系列字符的序列，例如 madam或 racecar。
+        // 有不同的算法可以检查一个词组或字符串是否为回文。最简单的方式是将字符串反向排列并
+        // 检查它和原字符串是否相同。如果两者相同，那么它就是一个回文。
+        // 我们也可以用栈来完成，但是利用数据结构来解决这个问题的最简单方法是使用双端队列。
+
+        function palindromeChecker(aString) {
+            if (aString === undefined || aString === null ||
+                (aString !== null && aString.length === 0)) { // {1} 
+                return false;
+            }
+            const deque = new Deque(); // {2} 
+            const lowerString = aString.toLocaleLowerCase().split(' ').join(''); // {3} 
+            let isEqual = true;
+            let firstChar, lastChar;
+            for (let i = 0; i < lowerString.length; i++) { // {4} 
+                deque.addBack(lowerString.charAt(i));
+            }
+            while (deque.size() > 1 && isEqual) { // {5} 
+                firstChar = deque.removeFront(); // {6} 
+                lastChar = deque.removeBack(); // {7} 
+                if (firstChar !== lastChar) {
+                    isEqual = false; // {8} 
+                }
+            }
+            return isEqual;
+        }
+
+        // 在我们开始解释算法逻辑之前，需要检查传入的字符串参数是否合法（行{1}）。如果不合法，我们返回 false。
+        // 对于这个算法，将使用实现的 Deque 类（行{2}）。
+        // 由于可能接收到同时包含大小写字母的字符串，我们会将所有字母转化为小写，同时移除所有的空格（行{3}）。
+        // 如果你愿意，也可以移除所有的特殊字符，例如!、?、-、(和)等。为了保证算法简洁，我们会跳过这部分。
+        // 然后，我们会对字符串中的所有字符执行 enqueue 操作（行{4}）。
+        // 如果所有元素都在双端队列中（如果只有一个字符的话，那它肯定是回文）并且首尾字符相同的话（行{5}），
+        // 我们将从前端移除一个元素（行{6}），再从后端移除一个元素（行{7}）。
+        // 要使字符串为回文，移除的两个字符必须相同。如果字符不同的话，这个字符串就不是一个回文（行{8}）。
+
+        console.log('a', palindromeChecker('a'));
+        console.log('aa', palindromeChecker('aa'));
+        console.log('kayak', palindromeChecker('kayak'));
+        console.log('level', palindromeChecker('level'));
+        console.log('Was it a car or a cat I saw', palindromeChecker('Was it a car or a cat I saw ')); 
+        console.log('Step on no pets', palindromeChecker('Step on no pets'));
+        console.log('ab', palindromeChecker('ab'));
+        console.log('aasd', palindromeChecker('aasd'));
+        console.log('agad', palindromeChecker('agad'));
+
+    </script>
+</body>
+
+</html>

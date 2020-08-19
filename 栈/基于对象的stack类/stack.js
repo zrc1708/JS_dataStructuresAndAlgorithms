@@ -37,7 +37,7 @@ class Stack {
     // 查看栈顶的值
     peek() { 
         if (this.isEmpty()) { 
-        return undefined; 
+            return undefined; 
         } 
         return this.items[this.count - 1]; 
     }

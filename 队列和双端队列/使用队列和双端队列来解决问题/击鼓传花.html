@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./queue.js"></script>
+    <script>
+        // 循环队列的一个例子就是击鼓传花游戏（hot potato）。
+        // 在这个游戏中，孩子们围成一个圆圈，把花尽快地传递给旁边的人。某一时刻传花停止，
+        // 这个时候花在谁手里，谁就退出圆圈、结束游戏。重复这个过程，直到只剩一个孩子（胜者）。
+
+        function hotPotato(elementsList, num) {
+            const queue = new Queue(); // {1} 
+            const elimitatedList = [];
+            for (let i = 0; i < elementsList.length; i++) {
+                queue.enqueue(elementsList[i]); // {2} 
+            }
+            while (queue.size() > 1) {
+                for (let i = 0; i < num; i++) {
+                    queue.enqueue(queue.dequeue()); // {3} 
+                }
+                elimitatedList.push(queue.dequeue()); // {4} 
+            }
+            return {
+                eliminated: elimitatedList,
+                winner: queue.dequeue() // {5} 
+            };
+        }
+
+        // 要用到实现的 Queue 类（行{1}）。
+        // 我们会得到一份名单，把里面的名字全都加入队列（行{2}）。
+        // 给定一个数字，然后迭代队列。从队列开头移除一项，再将其添加到队列末尾（行{3}），
+        // 模拟击鼓传花（如果你把花传给了旁边的人，你被淘汰的威胁就立刻解除了）。
+        // 一旦达到给定的传递次数，拿着花的那个人就被淘汰了（从队列中移除——行{4}）。
+        // 最后只剩下一个人的时候，这个人就是胜者（行{5}）。
+
+        const names = ['John', 'Jack', 'Camila', 'Ingrid', 'Carl']; 
+        const result = hotPotato(names, 7);
+        result.eliminated.forEach(name => { 
+            console.log(`${name}在击鼓传花游戏中被淘汰。`); 
+        }); 
+        console.log(`胜利者： ${result.winner}`);
+    </script>
+</body>
+
+</html>
