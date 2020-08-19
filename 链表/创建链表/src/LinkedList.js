@@ -1,13 +1,5 @@
-function defaultEquals(a, b) {
-    return a === b;
-}
-
-class Node { // {1} 
-    constructor(element) {
-        this.element = element;
-        this.next = undefined;
-    }
-}
+import {defaultEquals} from './util'
+import {Node} from './linked-list-models' // {1}
 
 // 对于 LinkedList 数据结构，我们从声明 count 属性开始（行{2}），它用来存储链表中的元素数量。
 
@@ -21,7 +13,7 @@ class Node { // {1}
 // Node类表示我们想要添加到链表中的项。它包含一个 element 属性，该属性表示要加入链表元素的值；
 // 以及一个 next 属性，该属性是指向链表中下一个元素的指针。
 
-class LinkedList {
+export default class LinkedList {
     constructor(equalsFn = defaultEquals) {
         this.count = 0; // {2} 
         this.head = undefined; // {3} 
