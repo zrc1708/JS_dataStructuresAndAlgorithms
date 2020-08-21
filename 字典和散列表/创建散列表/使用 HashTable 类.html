@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./hashtable.js"></script>
+    <script>
+        const hash = new HashTable();
+        hash.put('Gandalf', 'gandalf@email.com');
+        hash.put('John', 'johnsnow@email.com');
+        hash.put('Tyrion', 'tyrion@email.com');
+        console.log(hash.hashCode('Gandalf') + ' - Gandalf');
+        console.log(hash.hashCode('John') + ' - John');
+        console.log(hash.hashCode('Tyrion') + ' - Tyrion');
+
+        console.log(hash.get('Gandalf')); // gandalf@email.com 
+        console.log(hash.get('Loiane')); // undefined
+
+        hash.remove('Gandalf'); 
+        console.log(hash.get('Gandalf'));// undefined
+    </script>
+</body>
+
+</html>

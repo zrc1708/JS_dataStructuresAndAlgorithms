@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./集合运算.js"></script>
+    <script>
+        const setA = new Set();
+        setA.add(1);
+        setA.add(2);
+        setA.add(3);
+        const setB = new Set();
+        setB.add(2);
+        setB.add(3);
+        setB.add(4);
+        const differenceAB = setA.difference(setB);
+        console.log(differenceAB.values());
+    </script>
+</body>
+
+</html>

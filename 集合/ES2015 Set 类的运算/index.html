@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const setA = new Set();
+        setA.add(1);
+        setA.add(2);
+        setA.add(3);
+        const setB = new Set();
+        setB.add(2);
+        setB.add(3);
+        setB.add(4);
+
+        console.log(setA)
+        console.log(setB)
+
+        // 模拟并集运算
+        const union = (setA, setB) => {
+            const unionAb = new Set();
+            setA.forEach(value => unionAb.add(value));
+            setB.forEach(value => unionAb.add(value));
+            return unionAb;
+        };
+        console.log(union(setA, setB)); // 输出[1, 2, 3, 4]
+
+        // 模拟交集运算
+        const intersection = (setA, setB) => {
+            const intersectionSet = new Set();
+            setA.forEach(value => {
+                if (setB.has(value)) {
+                    intersectionSet.add(value);
+                }
+            });
+            return intersectionSet;
+        };
+        console.log(intersection(setA, setB)); // 输出[2, 3]
+
+        // 模拟差集运算
+        const difference = (setA, setB) => {
+            const differenceSet = new Set();
+            setA.forEach(value => {
+                if (!setB.has(value)) { 
+                    differenceSet.add(value);
+                }
+            });
+            return differenceSet;
+        };
+        console.log(difference(setA, setB));
+
+        // 使用扩展运算符
+        // 有一种计算并集、交集和差集的简便方法，就是使用扩展运算符
+
+        // 并集
+        console.log(new Set([...setA, ...setB]));
+        // 交集
+        console.log(new Set([...setA].filter(x => setB.has(x))));
+        // 差集
+        console.log(new Set([...setA].filter(x => !setB.has(x))));
+        
+    </script>
+</body>
+
+</html>
