@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const map = new Map();
+        map.set('Gandalf', 'gandalf@email.com');
+        map.set('John', 'johnsnow@email.com');
+        map.set('Tyrion', 'tyrion@email.com');
+        console.log(map.has('Gandalf')); // true 
+        console.log(map.size); // 3 
+
+        // 和我们的 Dictionary 类不同，ES2015 的 Map 类的 values 方法和 keys 方法都返回Iterator，而不是值或键构成的数组。
+
+        let keys = map.keys()
+        console.log(keys); // 输出{"Gandalf", "John", "Tyrion"} 
+        console.log(keys.next())
+        console.log(keys.next())
+        console.log(keys.next())
+        console.log(keys.next())
+        console.log(map.values()); // 输出{"gandalf@email.com", "johnsnow@email.com", "tyrion@email.com"}
+        console.log(map.get('Tyrion')); // tyrion@email.com
+
+        map.delete('John');
+        console.log(map)
+    </script>
+</body>
+
+</html>

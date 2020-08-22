@@ -76,6 +76,14 @@ class HashTable {
         }
         return false;
     }
+    // 检验是否为空
+    isEmpty() {
+        return this.size() === 0;
+    }
+    // 返回所包含值的数量。
+    size() {
+        return Object.keys(this.table).length;
+    }
     toString() {
         if (this.isEmpty()) {
             return '';
