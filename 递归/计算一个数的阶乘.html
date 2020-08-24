@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 作为递归的第一个例子，我们来看看如何计算一个数的阶乘。数 n 的阶乘，定义为 n!，表示从 1 到 n 的整数的乘积。
+        function factorialIterative(num){
+            if(num===1||num===0) return 1
+            return num*factorialIterative(num-1)
+        }
+        console.log(factorialIterative(5))        
+    </script>
+</body>
+</html>

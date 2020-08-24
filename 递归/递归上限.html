@@ -1,0 +1,33 @@
+ <!DOCTYPE html>
+ <html lang="en">
+
+ <head>
+     <meta charset="UTF-8">
+     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <title>Document</title>
+ </head>
+
+ <body>
+     <script>
+         //  如果忘记加上用以停止函数递归调用的基线条件，会发生什么呢？
+         // 递归并不会无限地执行下去，浏览器会抛出错误，也就是所谓的栈溢出错误（stack overflow error）。
+         let i = 0;
+
+         function recursiveFn() {
+             i++;
+             recursiveFn();
+         }
+         try {
+             recursiveFn();
+         } catch (ex) {
+             console.log('i = ' + i + ' error: ' + ex);
+         }
+        //  在 Chrome v65 中， 该函数执行了 15 662 次， 而后浏览器抛出错误 RangeError: Maximum
+        //  call stack size exceeded（ 超限错误： 超过最大调用栈大小）。 
+        //  在 Firefox v59 中， 该函数执行了 188 641 次， 然后浏览器抛出错误 InternalError: too much recursion（ 内部错误：
+        //  递归次数过多）。 
+        //  在 Edge v41 中， 该函数执行了 17 654 次。
+     </script>
+ </body>
+
+ </html>
