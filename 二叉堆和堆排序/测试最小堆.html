@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="./MinHeap.js"></script>
+    <script>
+        // const heap = new MinHeap();
+
+        // heap.insert(2);
+        // heap.insert(3);
+        // heap.insert(4);
+        // heap.insert(5);
+        // heap.insert(1);
+
+        // console.log(heap)
+
+
+        const minheap = new MinHeap();
+        // for (let i = 1; i < 10; i++) {
+        //     heap.insert(i);
+        // }
+        // for (let i = 10; i > 0; i--) {
+        //     heap.insert(i);
+        // }
+        minheap.insert(2);
+        minheap.insert(3);
+        minheap.insert(4);
+        minheap.insert(5);
+        minheap.insert(1);
+
+        console.log('Extract minimum: ', minheap.extract()); 
+        
+        console.log('Extract minimum: ', minheap.extract()); 
+        console.log(minheap)
+    </script>
+</body>
+
+</html>
