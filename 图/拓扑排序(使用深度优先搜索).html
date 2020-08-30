@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <img src="http://imgapi.jibei66.com/getimage/dag.png" alt="">
+    <p>这是一个有向图，意味着任务的执行是有顺序的。<br>例如，任务 F 不能在任务 A
+        之前执行。注意这个图没有环，意味着这是一个无环图。所以，我们可以说该图
+        是一个有向无环图（DAG）。</p>
+    <img src="http://imgapi.jibei66.com/getimage/dag2.png" alt="">
+
+    <script src="./Graph.js"></script>
+    <script src="./探索深度优先算法.js"></script>
+    <script>
+        // 当我们需要编排一些任务或步骤的执行顺序时，这称为拓扑排序
+        // 拓扑排序只能应用于 有向无环图（DAG）
+
+        graph = new Graph(true); // 有向图
+        myVertices = ['A', 'B', 'C', 'D', 'E', 'F'];
+        for (i = 0; i < myVertices.length; i++) {
+            graph.addVertex(myVertices[i]);
+        }
+        graph.addEdge('A', 'C');
+        graph.addEdge('A', 'D');
+        graph.addEdge('B', 'D');
+        graph.addEdge('B', 'E');
+        graph.addEdge('C', 'F');
+        graph.addEdge('F', 'E');
+        const result = DFS(graph);
+        // console.log(result)
+
+        // 这段代码将创建图，添加边，执行改进版本的深度优先搜索算法，并将结果保存到 result变量。
+        // 现在要做的仅仅是以倒序来排序完成时间数组，这便得出了该图的拓扑排序，如下所示。
+
+        const fTimes = result.finished;
+        // console.log(fTimes)
+        s = '';
+        for (let count = 0; count < myVertices.length; count++) {
+            let max = 0;
+            let maxName = null;
+            for (i = 0; i < myVertices.length; i++) {
+                if (fTimes[myVertices[i]] > max) {
+                    max = fTimes[myVertices[i]];
+                    maxName = myVertices[i];
+                }
+            }
+            s += ' - ' + maxName;
+            delete fTimes[maxName];
+        }
+        console.log(s);
+
+        // 注意之前的拓扑排序结果仅是多种可能性之一。如果我们稍微修改一下算法，就会有不同的结果。
+        // 比如下面这个结果也是众多其他可能性中的一个。
+        // A - B - C - D - F - E 
+        // 这也是一个可以接受的结果
+    </script>
+</body>
+
+</html>
