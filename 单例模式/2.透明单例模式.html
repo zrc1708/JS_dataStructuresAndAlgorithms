@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        var CreateDiv = (function () {
+            var instance;
+            var CreateDiv = function (html) {
+                if (instance) {
+                    return instance;
+                }
+                this.html = html;
+                this.init();
+                return instance = this;
+            };
+            CreateDiv.prototype.init = function () {
+                var div = document.createElement('div');
+                div.innerHTML = this.html;
+                document.body.appendChild(div);
+            };
+            return CreateDiv;
+        })();
+        var a = new CreateDiv('sven1');
+        var b = new CreateDiv('sven2');
+        console.log(a === b); // true
+
+        // 虽然现在完成了一个透明的单例类的编写，但它同样有一些缺点。
+        // 为了把 instance 封装起来，我们使用了自执行的匿名函数和闭包，并且让这个匿名函数返回
+        // 真正的 Singleton 构造方法，这增加了一些程序的复杂度，阅读起来也不是很舒服。
+
+
+        // 在这段代码中，CreateDiv 的构造函数实际上负责了两件事情。
+        // 第一是创建对象和执行初始化 init 方法，第二是保证只有一个对象。
+        // 虽然我们目前还没有接触过“单一职责原则”的概念，
+        // 但可以明确的是，这是一种不好的做法，至少这个构造函数看起来很奇怪。
+    </script>
+</body>
+
+</html>

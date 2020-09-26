@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="loginBtn">登录</button>
+
+    <script>
+        // 惰性单例指的是在需要的时候才创建对象实例。
+        // 惰性单例是单例模式的重点，这种技术在实际开发中非常有用，有用的程度可能超出了我们的想象
+
+        // 假设我们是 WebQQ 的开发人员，当点击左边导航里 QQ 头像时，
+        // 会弹出一个登录浮窗，很明显这个浮窗在页面里总是唯一的，不可能出现同时存在两个登录窗口的情况。
+
+        var createLoginLayer = (function () {
+            var div;
+            return function () {
+                if (!div) {
+                    div = document.createElement('div');
+                    div.innerHTML = '我是登录浮窗';
+                    div.style.display = 'none';
+                    document.body.appendChild(div);
+                }
+                return div;
+            }
+        })();
+        
+        document.getElementById('loginBtn').onclick = function () {
+            var loginLayer = createLoginLayer();
+            loginLayer.style.display = 'block';
+        };
+    </script>
+</body>
+
+</html>
